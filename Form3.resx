@@ -1,85 +1,60 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.IO;
-namespace demo
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void btn_Thoat(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            txttaikhoan.Focus();
-            txtMatkhau.Focus();
-
-            txttaikhoan.KeyPress += Txttaikhoan_KeyPress;
-            txtMatkhau.KeyPress += txtMatkhau_KeyPress;
-        }
-
-        private void Txttaikhoan_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                txtMatkhau.Focus();
-                e.Handled = true; // Ngăn chặn ký tự Enter xuất hiện trong TextBox
-            }
-        }
-        private void txtMatkhau_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                Login();
-                e.Handled = true; // Ngăn chặn ký tự Enter xuất hiện trong TextBox
-
-                if (this.txttaikhoan.Text == "Tuandat" && this.txtMatkhau.Text == "123456")
-                {
-                    Form2 f = new Form2();
-                    f.Show();
-                    this.Hide();
-                }
-            }
-        }
-
-        private void Login()
-        {
-            if (txttaikhoan.Text.Length == 0 && txtMatkhau.Text.Length == 0)
-                MessageBox.Show("Bạn chưa đăng nhập mật khẩu");
-            else
-                if (this.txttaikhoan.Text.Length == 0)
-                    MessageBox.Show("Bạn chưa đăng nhập Tài Khoản");
-                else
-                    if (this.txtMatkhau.Text.Length == 0)
-                        MessageBox.Show("Bạn chưa đăng nhập mật khẩu");
-                    else
-                        if (this.txttaikhoan.Text == "Tuandat" && this.txtMatkhau.Text == "123456")
-                            MessageBox.Show("Đăng nhập thành công");
-                        else
-                            MessageBox.Show("Đăng nhập không thành công");
-        }
-        private void btn_Login(object sender, EventArgs e)
-        {
-            Form2 f = new Form2();
-            if (this.txttaikhoan.Text == "Tuandat" && this.txtMatkhau.Text == "123456")
-            {
-                f.Show();
-                this.Hide();
-            }
-            Login();
-        }
-    }
-}
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>
